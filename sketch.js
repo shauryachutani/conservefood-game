@@ -1,0 +1,1056 @@
+var player,maze,healthbar,bulletgroup,ebulletgroup,health=100,gamestate="play",enemyhp=100,bulletcount=50,enemy2hp=100;
+var foodcount=0;
+
+function setup() {
+  createCanvas(displayWidth,displayHeight-80);
+ maze=new Maze();
+player=new Player();
+food=new Food();
+enemy1=new Enemy(100,200);
+bulletgroup=new Group();
+ebulletgroup=new Group();
+enemy2=new Enemy(800,200)
+ebulletgroup2=new Group();
+ 
+}
+ function draw() {
+  background(0); 
+  fill("lime");
+  textSize(20)
+  text("Instruction: Press s to shoot the enemy",700,25) 
+  text("Make the foodcount 150+ to win",800,50)
+  text("you can use the food to increase your health by pressing d",800,75)
+  text("Enemy's HP:"+enemyhp+"%",80,200)
+  text("Enemy's HP"+enemy2hp+"%",900,200);
+if(frameCount%10===0){
+  console.log(enemy2.enemy.x)
+  console.log(enemy2.enemy.y)
+}
+  if(ebulletgroup2.isTouching(player.player)){
+    health=health-10;
+  }
+enemy2.bounce();
+player.run();
+player.player.collide(maze.wall);
+player.player.collide(maze.wall2);
+player.player.collide(maze.wall3);
+player.player.collide(maze.wall4);
+player.player.collide(maze.wall5);
+player.player.collide(maze.wall6);
+player.player.collide(maze.wall7);
+player.player.collide(maze.wall8);
+player.player.collide(maze.wall9);
+player.player.collide(maze.wall10);
+player.player.collide(maze.wall11);
+player.player.collide(maze.wall12);
+player.player.collide(maze.wall13);
+player.player.collide(maze.wall14);
+player.player.collide(maze.wall15);
+player.player.collide(maze.wall16);
+player.player.collide(maze.wall17);
+player.player.collide(maze.wall18);
+player.player.collide(maze.wall19);
+player.player.collide(maze.wall20);
+player.player.collide(maze.wall21);
+player.player.collide(maze.wall22);
+player.player.collide(maze.wall23);
+player.player.collide(maze.wall24);
+player.player.collide(maze.wall25);
+player.player.collide(maze.wall26);
+player.player.collide(maze.wall27);
+
+bulletgroup.collide(maze.wall);
+bulletgroup.collide(maze.wall2);
+bulletgroup.collide(maze.wall3);
+bulletgroup.collide(maze.wall4);
+bulletgroup.collide(maze.wall5);
+bulletgroup.collide(maze.wall6);
+bulletgroup.collide(maze.wall7);
+bulletgroup.collide(maze.wall8);
+bulletgroup.collide(maze.wall9);
+bulletgroup.collide(maze.wall10);
+bulletgroup.collide(maze.wall11);
+bulletgroup.collide(maze.wall12);
+bulletgroup.collide(maze.wall13);
+bulletgroup.collide(maze.wall14);
+bulletgroup.collide(maze.wall15);
+bulletgroup.collide(maze.wall16);
+bulletgroup.collide(maze.wall17);
+bulletgroup.collide(maze.wall18);
+bulletgroup.collide(maze.wall19);
+bulletgroup.collide(maze.wall20);
+bulletgroup.collide(maze.wall21);
+bulletgroup.collide(maze.wall22);
+bulletgroup.collide(maze.wall23);
+bulletgroup.collide(maze.wall24);
+bulletgroup.collide(maze.wall25);
+bulletgroup.collide(maze.wall26);
+bulletgroup.collide(maze.wall27);
+
+ebulletgroup.collide(maze.wall);
+ebulletgroup.collide(maze.wall2);
+ebulletgroup.collide(maze.wall3);
+ebulletgroup.collide(maze.wall4);
+ebulletgroup.collide(maze.wall5);
+ebulletgroup.collide(maze.wall6);
+ebulletgroup.collide(maze.wall7);
+ebulletgroup.collide(maze.wall8);
+ebulletgroup.collide(maze.wall9);
+ebulletgroup.collide(maze.wall10);
+ebulletgroup.collide(maze.wall11);
+ebulletgroup.collide(maze.wall12);
+ebulletgroup.collide(maze.wall13);
+ebulletgroup.collide(maze.wall14);
+ebulletgroup.collide(maze.wall15);
+ebulletgroup.collide(maze.wall16);
+ebulletgroup.collide(maze.wall17);
+ebulletgroup.collide(maze.wall18);
+ebulletgroup.collide(maze.wall19);
+ebulletgroup.collide(maze.wall20);
+ebulletgroup.collide(maze.wall21);
+ebulletgroup.collide(maze.wall22);
+ebulletgroup.collide(maze.wall23);
+ebulletgroup.collide(maze.wall24);
+ebulletgroup.collide(maze.wall25);
+ebulletgroup.collide(maze.wall26);
+ebulletgroup.collide(maze.wall27);
+
+
+
+
+enemy1.bounce();
+
+  score();
+  if(enemy1.enemy.isTouching(player.player)){
+    health=0;
+    player.player.destroy();
+    
+  }
+  
+  
+  stroke("lime")
+  line(0,80,displayWidth,80);
+  
+foodisplay=createSprite(50,50,20,20)
+foodisplay.shapeColor="pink"
+fill("lime");
+textSize(25)
+text("Foodcount :"+foodcount,75,50);
+text("HP:"+health+"%",275,50);
+text("bullets remaining:"+bulletcount,475,50)
+  drawSprites();
+}
+function score(){
+  if(player.player.isTouching(food.food1)){
+    foodcount=foodcount+1;
+    food.food1.destroy();
+  }
+  if(player.player.isTouching(food.food2)){
+    foodcount=foodcount+1;
+    food.food2.destroy();
+  }
+  if(player.player.isTouching(food.food3)){
+    foodcount=foodcount+1;
+    food.food3.destroy();
+  }
+
+  if(player.player.isTouching(food.food4)){
+    foodcount=foodcount+1;
+    food.food4.destroy();
+  }
+  if(player.player.isTouching(food.food5)){
+    foodcount=foodcount+1;
+    food.food5.destroy();
+  }
+  if(player.player.isTouching(food.food6)){
+    foodcount=foodcount+1;
+    food.food6.destroy();
+  }
+  if(player.player.isTouching(food.food7)){
+    foodcount=foodcount+1;
+    food.food7.destroy();
+  }if(player.player.isTouching(food.food8)){
+    foodcount=foodcount+1;
+    food.food8.destroy();
+  }
+  if(player.player.isTouching(food.food9)){
+    foodcount=foodcount+1;
+    food.food9.destroy();
+  }
+  if(player.player.isTouching(food.food10)){
+    foodcount=foodcount+1;
+    food.food10.destroy();
+  }
+  if(player.player.isTouching(food.food11)){
+    foodcount=foodcount+1;
+    food.food11.destroy();
+  }
+  if(player.player.isTouching(food.food12)){
+    foodcount=foodcount+1;
+    food.food12.destroy();
+  }
+  if(player.player.isTouching(food.food13)){
+    foodcount=foodcount+1;
+    food.food13.destroy();
+  }
+  if(player.player.isTouching(food.food14)){
+    foodcount=foodcount+1;
+    food.food14.destroy();
+  }
+  if(player.player.isTouching(food.food15)){
+    foodcount=foodcount+1;
+    food.food15.destroy();
+  }
+  if(player.player.isTouching(food.food16)){
+    foodcount=foodcount+1;
+    food.food16.destroy();
+  }
+
+  if(player.player.isTouching(food.food17)){
+    foodcount=foodcount+1;
+    food.food17.destroy();
+  }
+  if(player.player.isTouching(food.food18)){
+    foodcount=foodcount+1;
+    food.food18.destroy();
+  }
+  if(player.player.isTouching(food.food19)){
+    foodcount=foodcount+1;
+    food.food19.destroy();
+  }
+  if(player.player.isTouching(food.food20)){
+    foodcount=foodcount+1;
+    food.food20.destroy();
+  }if(player.player.isTouching(food.food21)){
+    foodcount=foodcount+1;
+    food.food21.destroy();
+  }
+  if(player.player.isTouching(food.food22)){
+    foodcount=foodcount+1;
+    food.food22.destroy();
+  }
+  if(player.player.isTouching(food.food23)){
+    foodcount=foodcount+1;
+    food.food23.destroy();
+  }
+  if(player.player.isTouching(food.food24)){
+    foodcount=foodcount+1;
+    food.food24.destroy();
+  }
+  if(player.player.isTouching(food.food25)){
+    foodcount=foodcount+1;
+    food.food25.destroy();
+  }
+  if(player.player.isTouching(food.food26)){
+    foodcount=foodcount+1;
+    food.food26.destroy();
+  }
+  if(player.player.isTouching(food.food27)){
+    foodcount=foodcount+1;
+    food.food27.destroy();
+  }
+  if(player.player.isTouching(food.food28)){
+    foodcount=foodcount+1;
+    food.food28.destroy();
+  } if(player.player.isTouching(food.food29)){
+    foodcount=foodcount+1;
+    food.food29.destroy();
+  }
+  if(player.player.isTouching(food.food30)){
+    foodcount=foodcount+1;
+    food.food30.destroy();
+  }
+  if(player.player.isTouching(food.food31)){
+    foodcount=foodcount+1;
+    food.food31.destroy();
+  }
+  if(player.player.isTouching(food.food32)){
+    foodcount=foodcount+1;
+    food.food32.destroy();
+  }
+
+  if(player.player.isTouching(food.food33)){
+    foodcount=foodcount+1;
+    food.food33.destroy();
+  }
+  if(player.player.isTouching(food.food34)){
+    foodcount=foodcount+1;
+    food.food34.destroy();
+  }if(player.player.isTouching(food.food35)){
+    foodcount=foodcount+1;
+    food.food35.destroy();
+  }
+  if(player.player.isTouching(food.food36)){
+    foodcount=foodcount+1;
+    food.food36.destroy();
+  }
+  if(player.player.isTouching(food.food37)){
+    foodcount=foodcount+1;
+    food.food37.destroy();
+  }
+  if(player.player.isTouching(food.food38)){
+    foodcount=foodcount+1;
+    food.food38.destroy();
+  }
+  if(player.player.isTouching(food.food39)){
+    foodcount=foodcount+1;
+    food.food39.destroy();
+  }
+  if(player.player.isTouching(food.food40)){
+    foodcount=foodcount+1;
+    food.food40.destroy();
+  }
+
+  if(player.player.isTouching(food.food41)){
+    foodcount=foodcount+1;
+    food.food41.destroy();
+  }
+  if(player.player.isTouching(food.food42)){
+    foodcount=foodcount+1;
+    food.food42.destroy();
+  }
+  if(player.player.isTouching(food.food43)){
+    foodcount=foodcount+1;
+    food.food43.destroy();
+  }
+  if(player.player.isTouching(food.food44)){
+    foodcount=foodcount+1;
+    food.food44.destroy();
+  }
+  
+  if(player.player.isTouching(food.food45)){
+    foodcount=foodcount+1;
+    food.food45.destroy();
+  }
+  if(player.player.isTouching(food.food46)){
+    foodcount=foodcount+1;
+    food.food46.destroy();
+  }
+  if(player.player.isTouching(food.food47)){
+    foodcount=foodcount+1;
+    food.food47.destroy();
+  }
+  if(player.player.isTouching(food.food48)){
+    foodcount=foodcount+1;
+    food.food48.destroy();
+  }
+  if(player.player.isTouching(food.food49)){
+    foodcount=foodcount+1;
+    food.food49.destroy();
+  }
+  if(player.player.isTouching(food.food50)){
+    foodcount=foodcount+1;
+    food.food50.destroy();
+  }
+  if(player.player.isTouching(food.food51)){
+    foodcount=foodcount+1;
+    food.food51.destroy();
+  }
+  if(player.player.isTouching(food.food52)){
+    foodcount=foodcount+1;
+    food.food52.destroy();
+  }
+  if(player.player.isTouching(food.food53)){
+    foodcount=foodcount+1;
+    food.food53.destroy();
+  }
+  if(player.player.isTouching(food.food54)){
+    foodcount=foodcount+1;
+    food.food54.destroy();
+  }
+  if(player.player.isTouching(food.food55)){
+    foodcount=foodcount+1;
+    food.food55.destroy();
+  }
+  if(player.player.isTouching(food.food56)){
+    foodcount=foodcount+1;
+    food.food56.destroy();
+  }
+  if(player.player.isTouching(food.food57)){
+    foodcount=foodcount+1;
+    food.food57.destroy();
+  }
+  if(player.player.isTouching(food.food58)){
+    foodcount=foodcount+1;
+    food.food58.destroy();
+  }
+  if(player.player.isTouching(food.food59)){
+    foodcount=foodcount+1;
+    food.food59.destroy();
+  }
+  if(player.player.isTouching(food.food60)){
+    foodcount=foodcount+1;
+    food.food60.destroy();
+  }
+  if(player.player.isTouching(food.food61)){
+    foodcount=foodcount+1;
+    food.food61.destroy();
+  }if(player.player.isTouching(food.food62)){
+    foodcount=foodcount+1;
+    food.food62.destroy();
+  }
+  if(player.player.isTouching(food.food63)){
+    foodcount=foodcount+1;
+    food.food63.destroy();
+  }
+
+  if(player.player.isTouching(food.food64)){
+    foodcount=foodcount+1;
+    food.food64.destroy();
+  }
+  if(player.player.isTouching(food.food65)){
+    foodcount=foodcount+1;
+    food.food65.destroy();
+  }if(player.player.isTouching(food.food66)){
+    foodcount=foodcount+1;
+    food.food66.destroy();
+  }
+  if(player.player.isTouching(food.food67)){
+    foodcount=foodcount+1;
+    food.food67.destroy();
+  }
+  if(player.player.isTouching(food.food68)){
+    foodcount=foodcount+1;
+    food.food68.destroy();
+  }
+  if(player.player.isTouching(food.food69)){
+    foodcount=foodcount+1;
+    food.food69.destroy();
+  }
+
+  if(player.player.isTouching(food.food70)){
+    foodcount=foodcount+1;
+    food.food70.destroy();
+  }
+  if(player.player.isTouching(food.food71)){
+    foodcount=foodcount+1;
+    food.food71.destroy();
+  }
+  if(player.player.isTouching(food.food72)){
+    foodcount=foodcount+1;
+    food.food72.destroy();
+  }
+  if(player.player.isTouching(food.food73)){
+    foodcount=foodcount+1;
+    food.food73.destroy();
+  }
+  if(player.player.isTouching(food.food74)){
+    foodcount=foodcount+1;
+    food.food74.destroy();
+  }
+  if(player.player.isTouching(food.food75)){
+    foodcount=foodcount+1;
+    food.food75.destroy();
+  }
+
+  if(player.player.isTouching(food.food76)){
+    foodcount=foodcount+1;
+    food.food76.destroy();
+  }
+  if(player.player.isTouching(food.food77)){
+    foodcount=foodcount+1;
+    food.food77.destroy();
+  }
+  if(player.player.isTouching(food.food78)){
+    foodcount=foodcount+1;
+    food.food78.destroy();
+  }
+  if(player.player.isTouching(food.food79)){
+    foodcount=foodcount+1;
+    food.food79.destroy();
+  }
+  if(player.player.isTouching(food.food80)){
+    foodcount=foodcount+1;
+    food.food80.destroy();
+  }
+  if(player.player.isTouching(food.food81)){
+    foodcount=foodcount+1;
+    food.food81.destroy();
+  }
+  if(player.player.isTouching(food.food82)){
+    foodcount=foodcount+1;
+    food.food82.destroy();
+  }
+  if(player.player.isTouching(food.food83)){
+    foodcount=foodcount+1;
+    food.food83.destroy();
+  }
+  if(player.player.isTouching(food.food84)){
+    foodcount=foodcount+1;
+    food.food84.destroy();
+  }
+
+  if(player.player.isTouching(food.food85)){
+    foodcount=foodcount+1;
+    food.food85.destroy();
+  }
+  if(player.player.isTouching(food.food86)){
+    foodcount=foodcount+1;
+    food.food86.destroy();
+  }
+  if(player.player.isTouching(food.food87)){
+    foodcount=foodcount+1;
+    food.food87.destroy();
+  }
+
+  if(player.player.isTouching(food.food88)){
+    foodcount=foodcount+1;
+    food.food88.destroy();
+  }
+  if(player.player.isTouching(food.food89)){
+    foodcount=foodcount+1;
+    food.food89.destroy();
+  }
+  if(player.player.isTouching(food.food90)){
+    foodcount=foodcount+1;
+    food.food90.destroy();
+  }
+  if(player.player.isTouching(food.food91)){
+    foodcount=foodcount+1;
+    food.food91.destroy();
+  }
+
+  if(player.player.isTouching(food.food92)){
+    foodcount=foodcount+1;
+    food.food92.destroy();
+  }
+  if(player.player.isTouching(food.food93)){
+    foodcount=foodcount+1;
+    food.food93.destroy();
+  }
+  if(player.player.isTouching(food.food94)){
+    foodcount=foodcount+1;
+    food.food94.destroy();
+  }
+  if(player.player.isTouching(food.food95)){
+    foodcount=foodcount+1;
+    food.food95.destroy();
+  }
+  if(player.player.isTouching(food.food96)){
+    foodcount=foodcount+1;
+    food.food96.destroy();
+  }
+  if(player.player.isTouching(food.food97)){
+    foodcount=foodcount+1;
+    food.food97.destroy();
+  }
+  food.food97.debug=true;
+
+  if(player.player.isTouching(food.food98)){
+    foodcount=foodcount+1;
+    food.food98.destroy();
+  }
+  if(player.player.isTouching(food.food99)){
+    foodcount=foodcount+1;
+    food.food99.destroy();
+  }
+  if(player.player.isTouching(food.food100)){
+    foodcount=foodcount+1;
+    food.food100.destroy();
+  }if(player.player.isTouching(food.food101)){
+    foodcount=foodcount+1;
+    food.food101.destroy();
+  }
+
+  if(player.player.isTouching(food.food102)){
+    foodcount=foodcount+1;
+    food.food102.destroy();
+  }
+  if(player.player.isTouching(food.food103)){
+    foodcount=foodcount+1;
+    food.food103.destroy();
+  }
+  if(player.player.isTouching(food.food104)){
+    foodcount=foodcount+1;
+    food.food104.destroy();
+  }
+  if(player.player.isTouching(food.food105)){
+    foodcount=foodcount+1;
+    food.food105.destroy();
+  }
+  if(player.player.isTouching(food.food106)){
+    foodcount=foodcount+1;
+    food.food106.destroy();
+  }
+  if(player.player.isTouching(food.food107)){
+    foodcount=foodcount+1;
+    food.food107.destroy();
+  }if(player.player.isTouching(food.food108)){
+    foodcount=foodcount+1;
+    food.food108.destroy();
+  }if(player.player.isTouching(food.food109)){
+    foodcount=foodcount+1;
+    food.food30.destroy();
+  }
+  if(player.player.isTouching(food.food110)){
+    foodcount=foodcount+1;
+    food.food110.destroy();
+  }if(player.player.isTouching(food.food111)){
+    foodcount=foodcount+1;
+    food.food111.destroy();
+  }if(player.player.isTouching(food.food112)){
+    foodcount=foodcount+1;
+    food.food110.destroy();
+  }if(player.player.isTouching(food.food113)){
+    foodcount=foodcount+1;
+    food.food113.destroy();
+  }if(player.player.isTouching(food.food114)){
+    foodcount=foodcount+1;
+    food.food114.destroy();
+  }if(player.player.isTouching(food.food115)){
+    foodcount=foodcount+1;
+    food.food115.destroy();
+  }if(player.player.isTouching(food.food116)){
+    foodcount=foodcount+1;
+    food.food116.destroy();
+  }if(player.player.isTouching(food.food117)){
+    foodcount=foodcount+1;
+    food.food117.destroy();
+  }if(player.player.isTouching(food.food118)){
+    foodcount=foodcount+1;
+    food.food118.destroy();
+  }if(player.player.isTouching(food.food109)){
+    foodcount=foodcount+1;
+    food.food109.destroy();
+  }if(player.player.isTouching(food.food119)){
+    foodcount=foodcount+1;
+    food.food119.destroy();
+  }if(player.player.isTouching(food.food120)){
+    foodcount=foodcount+1;
+    food.food120.destroy();
+  }if(player.player.isTouching(food.food121)){
+    foodcount=foodcount+1;
+    food.food121.destroy();
+  }if(player.player.isTouching(food.food122)){
+    foodcount=foodcount+1;
+    food.food122.destroy();
+  }if(player.player.isTouching(food.food123)){
+    foodcount=foodcount+1;
+    food.food123.destroy();
+  }if(player.player.isTouching(food.food124)){
+    foodcount=foodcount+1;
+    food.food124.destroy();
+  }if(player.player.isTouching(food.food125)){
+    foodcount=foodcount+1;
+    food.food125.destroy();
+  }if(player.player.isTouching(food.food126)){
+    foodcount=foodcount+1;
+    food.food126.destroy();
+  }if(player.player.isTouching(food.food127)){
+    foodcount=foodcount+1;
+    food.food127.destroy();
+  }if(player.player.isTouching(food.food128)){
+    foodcount=foodcount+1;
+    food.food128.destroy();
+  }if(player.player.isTouching(food.food129)){
+    foodcount=foodcount+1;
+    food.food129.destroy();
+  }if(player.player.isTouching(food.food109)){
+    foodcount=foodcount+1;
+    food.food109.destroy();
+  }if(player.player.isTouching(food.food130)){
+    foodcount=foodcount+1;
+    food.food130.destroy();
+  }if(player.player.isTouching(food.food131)){
+    foodcount=foodcount+1;
+    food.food131.destroy();
+  }if(player.player.isTouching(food.food132)){
+    foodcount=foodcount+1;
+    food.food132.destroy();
+  }if(player.player.isTouching(food.food133)){
+    foodcount=foodcount+1;
+    food.food133.destroy();
+  }if(player.player.isTouching(food.food134)){
+    foodcount=foodcount+1;
+    food.food134.destroy();
+  }if(player.player.isTouching(food.food135)){
+    foodcount=foodcount+1;
+    food.food135.destroy();
+  }if(player.player.isTouching(food.food136)){
+    foodcount=foodcount+1;
+    food.food136.destroy();
+  }if(player.player.isTouching(food.food137)){
+    foodcount=foodcount+1;
+    food.food137.destroy();
+  }if(player.player.isTouching(food.food138)){
+    foodcount=foodcount+1;
+    food.food138.destroy();
+  }if(player.player.isTouching(food.food139)){
+    foodcount=foodcount+1;
+    food.food139.destroy();
+  }if(player.player.isTouching(food.food140)){
+    foodcount=foodcount+1;
+    food.food140.destroy();
+  }if(player.player.isTouching(food.food141)){
+    foodcount=foodcount+1;
+    food.food141.destroy();
+  }if(player.player.isTouching(food.food142)){
+    foodcount=foodcount+1;
+    food.food142.destroy();
+  }if(player.player.isTouching(food.food143)){
+    foodcount=foodcount+1;
+    food.food143.destroy();
+  }if(player.player.isTouching(food.food144)){
+    foodcount=foodcount+1;
+    food.food144.destroy();
+  }if(player.player.isTouching(food.food145)){
+    foodcount=foodcount+1;
+    food.food109.destroy();
+  }if(player.player.isTouching(food.food146)){
+    foodcount=foodcount+1;
+    food.food146.destroy();
+  }if(player.player.isTouching(food.food147)){
+    foodcount=foodcount+1;
+    food.food147.destroy();
+  }if(player.player.isTouching(food.food148)){
+    foodcount=foodcount+1;
+    food.food148.destroy();
+  }if(player.player.isTouching(food.food149)){
+    foodcount=foodcount+1;
+    food.food149.destroy();
+  }if(player.player.isTouching(food.food109)){
+    foodcount=foodcount+1;
+    food.food109.destroy();
+  }if(player.player.isTouching(food.food150)){
+    foodcount=foodcount+1;
+    food.food150.destroy();
+  }if(player.player.isTouching(food.food151)){
+    foodcount=foodcount+1;
+    food.food151.destroy();
+  }if(player.player.isTouching(food.food152)){
+    foodcount=foodcount+1;
+    food.food152.destroy();
+  }if(player.player.isTouching(food.food153)){
+    foodcount=foodcount+1;
+    food.food153.destroy();
+  }if(player.player.isTouching(food.food154)){
+    foodcount=foodcount+1;
+    food.food109.destroy();
+  }if(player.player.isTouching(food.food155)){
+    foodcount=foodcount+1;
+    food.food155.destroy();
+  }if(player.player.isTouching(food.food156)){
+    foodcount=foodcount+1;
+    food.food156.destroy();
+  }if(player.player.isTouching(food.food157)){
+    foodcount=foodcount+1;
+    food.food158.destroy();
+  }if(player.player.isTouching(food.food159)){
+    foodcount=foodcount+1;
+    food.food159.destroy();
+  }if(player.player.isTouching(food.food160)){
+    foodcount=foodcount+1;
+    food.food160.destroy();
+  }if(player.player.isTouching(food.food161)){
+    foodcount=foodcount+1;
+    food.food161.destroy();
+  }if(player.player.isTouching(food.food162)){
+    foodcount=foodcount+1;
+    food.food162.destroy();
+  }if(player.player.isTouching(food.food163)){
+    foodcount=foodcount+1;
+    food.food163.destroy();
+  }if(player.player.isTouching(food.food164)){
+    foodcount=foodcount+1;
+    food.food164.destroy();
+  }if(player.player.isTouching(food.food165)){
+    foodcount=foodcount+1;
+    food.food165.destroy();
+  }if(player.player.isTouching(food.food166)){
+    foodcount=foodcount+1;
+    food.food166.destroy();
+  }if(player.player.isTouching(food.food167)){
+    foodcount=foodcount+1;
+    food.food167.destroy();
+  }if(player.player.isTouching(food.food168)){
+    foodcount=foodcount+1;
+    food.food168.destroy();
+  }if(player.player.isTouching(food.food169)){
+    foodcount=foodcount+1;
+    food.food169.destroy();
+  }if(player.player.isTouching(food.food170)){
+    foodcount=foodcount+1;
+    food.food170.destroy();
+  }if(player.player.isTouching(food.food171)){
+    foodcount=foodcount+1;
+    food.food171.destroy();
+  }if(player.player.isTouching(food.food172)){
+    foodcount=foodcount+1;
+    food.food172.destroy();
+  }if(player.player.isTouching(food.food173)){
+    foodcount=foodcount+1;
+    food.food173.destroy();
+  }if(player.player.isTouching(food.food174)){
+    foodcount=foodcount+1;
+    food.food174.destroy();
+  }if(player.player.isTouching(food.food175)){
+    foodcount=foodcount+1;
+    food.food175.destroy();
+  }if(player.player.isTouching(food.food176)){
+    foodcount=foodcount+1;
+    food.food176.destroy();
+  }if(player.player.isTouching(food.food177)){
+    foodcount=foodcount+1;
+    food.food177.destroy();
+  }if(player.player.isTouching(food.food178)){
+    foodcount=foodcount+1;
+    food.food178.destroy();
+  }if(player.player.isTouching(food.food179)){
+    foodcount=foodcount+1;
+    food.food109.destroy();
+  }if(player.player.isTouching(food.food180)){
+    foodcount=foodcount+1;
+    food.food180.destroy();
+  }if(player.player.isTouching(food.food181)){
+    foodcount=foodcount+1;
+    food.food181.destroy();
+  }if(player.player.isTouching(food.food182)){
+    foodcount=foodcount+1;
+    food.food182.destroy();
+  }if(player.player.isTouching(food.food183)){
+    foodcount=foodcount+1;
+    food.food183.destroy();
+  }if(player.player.isTouching(food.food184)){
+    foodcount=foodcount+1;
+    food.food184.destroy();
+  }if(player.player.isTouching(food.food185)){
+    foodcount=foodcount+1;
+    food.food185.destroy();
+  }if(player.player.isTouching(food.food186)){
+    foodcount=foodcount+1;
+    food.food186.destroy();
+  }if(player.player.isTouching(food.food187)){
+    foodcount=foodcount+1;
+    food.food187.destroy();
+  }if(player.player.isTouching(food.food188)){
+    foodcount=foodcount+1;
+    food.food188.destroy();
+  }if(player.player.isTouching(food.food189)){
+    foodcount=foodcount+1;
+    food.food189.destroy();
+  }if(player.player.isTouching(food.food190)){
+    foodcount=foodcount+1;
+    food.food190.destroy();
+  }if(player.player.isTouching(food.food191)){
+    foodcount=foodcount+1;
+    food.food191.destroy();
+  }if(player.player.isTouching(food.food192)){
+    foodcount=foodcount+1;
+    food.food192.destroy();
+  }if(player.player.isTouching(food.food193)){
+    foodcount=foodcount+1;
+    food.food193.destroy();
+  }if(player.player.isTouching(food.food194)){
+    foodcount=foodcount+1;
+    food.food194.destroy();
+  }if(player.player.isTouching(food.food195)){
+    foodcount=foodcount+1;
+    food.food195.destroy();
+  }if(player.player.isTouching(food.food196)){
+    foodcount=foodcount+1;
+    food.food196.destroy();
+  }if(player.player.isTouching(food.food197)){
+    foodcount=foodcount+1;
+    food.food197.destroy();
+  }if(player.player.isTouching(food.food198)){
+    foodcount=foodcount+1;
+    food.food198.destroy();
+  }if(player.player.isTouching(food.food199)){
+    foodcount=foodcount+1;
+    food.food199.destroy();
+  }if(player.player.isTouching(food.food200)){
+    foodcount=foodcount+1;
+    food.food200.destroy();
+  }if(player.player.isTouching(food.food201)){
+    foodcount=foodcount+1;
+    food.food201.destroy();
+  }if(player.player.isTouching(food.food202)){
+    foodcount=foodcount+1;
+    food.food202.destroy();
+  }if(player.player.isTouching(food.food203)){
+    foodcount=foodcount+1;
+    food.food203.destroy();
+  }if(player.player.isTouching(food.food204)){
+    foodcount=foodcount+1;
+    food.food204.destroy();
+  }if(player.player.isTouching(food.food205)){
+    foodcount=foodcount+1;
+    food.food205.destroy();
+  }if(player.player.isTouching(food.food206)){
+    foodcount=foodcount+1;
+    food.food206.destroy();
+  }if(player.player.isTouching(food.food207)){
+    foodcount=foodcount+1;
+    food.food207.destroy();
+  }if(player.player.isTouching(food.food208)){
+    foodcount=foodcount+1;
+    food.food208.destroy();
+  }if(player.player.isTouching(food.food209)){
+    foodcount=foodcount+1;
+    food.food209.destroy();
+  }if(player.player.isTouching(food.food210)){
+    foodcount=foodcount+1;
+    food.food210.destroy();
+  }if(player.player.isTouching(food.food211)){
+    foodcount=foodcount+1;
+    food.food211.destroy();
+  }if(player.player.isTouching(food.food212)){
+    foodcount=foodcount+1;
+    food.food212.destroy();
+  }if(player.player.isTouching(food.food213)){
+    foodcount=foodcount+1;
+    food.food213.destroy();
+  }if(player.player.isTouching(food.food214)){
+    foodcount=foodcount+1;
+    food.food214.destroy();
+  }if(player.player.isTouching(food.food215)){
+    foodcount=foodcount+1;
+    food.food215.destroy();
+  }if(player.player.isTouching(food.food216)){
+    foodcount=foodcount+1;
+    food.food216.destroy();
+  }if(player.player.isTouching(food.food217)){
+    foodcount=foodcount+1;
+    food.food217.destroy();
+  }if(player.player.isTouching(food.food218)){
+    foodcount=foodcount+1;
+    food.food218.destroy();
+  }if(player.player.isTouching(food.food219)){
+    foodcount=foodcount+1;
+    food.food219.destroy();
+  }
+if(foodcount>0&&health>0&&health<100&&keyDown("d")&&player.player){
+  health=health+5;
+  foodcount=foodcount-2;
+}
+
+  text("Enemies")
+  if(enemy1.enemy.isTouching(food.food27)){
+foodcount=foodcount-1;
+food.food27.destroy();
+  }
+  if(keyWentDown("s")&&gamestate==="play"&& bulletcount>0){
+   createbullet(); 
+   bulletcount=bulletcount-1;
+  }
+
+  bulletgroup.debug=true;
+  if(bulletgroup.isTouching(enemy1.enemy)){
+    enemyhp=enemyhp-10;
+  
+  }
+  if(enemyhp===0){
+    enemy1.enemy.destroy();
+  }
+  if(enemy2hp===0){
+    enemy2.enemy.destroy();
+  }
+  if(player.player.x>66&&player.player.x<240&&player.player.y>165&&player.player.y<285){
+   createenemybullet(); 
+  }
+  if(player.player.x>675&&player.player.x<1057&&player.player.y>132&&player.player.y<401&&enemy2hp>0){
+    createenemybullet2()
+   }
+  if(ebulletgroup.isTouching(player.player)&&health>0){
+    health=health-10;
+    
+   
+  } 
+  if(bulletgroup.isTouching(enemy2.enemy)){
+    enemy2hp=enemy2hp-10;
+    
+  }
+  
+ if(health===0){
+   player.player.destroy();
+gamestate="end"
+ } 
+ if(enemyhp===0){
+gamestate="enemyend"
+ }
+ if(gamestate==="end"){
+   bulletgroup.destroyEach();
+   ebulletgroup.destroyEach();
+ }
+ if(enemyhp===0&&keyWentDown("s")){
+   createbullet();
+ }
+ if(gamestate==="enemyend"){
+   ebulletgroup.destroyEach();
+   
+ }
+ if(foodcount>=30&&keyDown("f")){
+bulletcount=bulletcount+5;
+foodcount=foodcount-10
+ }
+ if(enemyhp<50&&player.player.y>310&&enemyhp>0){
+   enemyhp=enemyhp+1;
+ }
+}
+function createbullet(){
+  var bullet=createSprite(player.player.x,player.player.y,15,6)
+  if(enemy1.enemy.x>player.player.x){
+    bullet.velocityX=10;
+    
+  }
+  if(enemy1.enemy.x<player.player.x){
+    bullet.velocityX=-10;
+
+  }
+  if(enemy1.enemy.y<player.player.y){
+    bullet.velocityY=-10;
+    
+  }
+  if(enemy1.enemy.y>player.player.y){
+    bullet.velocityY=10;
+    
+    
+  }
+  
+ 
+
+  bullet.shapeColor="red"
+  bulletgroup.add(bullet);
+} 
+function createenemybullet(){
+  if(frameCount%5===0){
+  var ebullet=createSprite(enemy1.enemy.x,enemy1.enemy.y,15,6)
+  if(enemy1.enemy.x>player.player.x){
+    ebullet.velocityX=-5;
+  }
+  if(enemy1.enemy.x<player.player.x){
+    ebullet.velocityX=5;
+  }
+  if(enemy1.enemy.y<player.player.y){
+    ebullet.velocityY=5;
+  }
+  if(enemy1.enemy.y>player.player.y){
+    ebullet.velocityY=-5;
+  }
+
+  ebullet.shapeColor="blue"
+  ebulletgroup.add(ebullet);
+}
+
+}
+function createenemybullet2(){
+  if(frameCount%5===0){
+    var ebullet2=createSprite(enemy2.enemy.x,enemy2.enemy.y,15,6)
+    if(enemy1.enemy.x>player.player.x){
+      ebullet2.velocityX=-5;
+    }
+    if(enemy1.enemy.x<player.player.x){
+      ebullet2.velocityX=5;
+    }
+    if(enemy1.enemy.y<player.player.y){
+      ebullet2.velocityY=5;
+    }
+    if(enemy1.enemy.y>player.player.y){
+      ebullet2.velocityY=-5;
+    }
+  
+    ebullet2.shapeColor="blue"
+    ebulletgroup2.add(ebullet2);
+  }
+  
+ }
